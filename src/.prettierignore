@@ -1,0 +1,9 @@
+#this files gives the list of files where prettier rules are not applied
+/.vscode
+/node_modules
+./dist
+
+
+*.env
+.env.
+env*
