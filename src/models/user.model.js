@@ -1,8 +1,6 @@
 import mongoose, { Schema } from "mongoose";
 import { JsonWebTokenError } from "jsonwebtoken";
-import bcrypt from  "bcrypt";
-
-
+import bcrypt from "bcrypt";
 
 const userSchema = new Schema(
   {
@@ -23,40 +21,33 @@ const userSchema = new Schema(
       trim: true,
     },
     fullname: {
-        type: String,
-        required: true,
-        trim: true,
-        index:true,
+      type: String,
+      required: true,
+      trim: true,
+      index: true,
+    },
+    avatar: {
+      type: String, //to store image in form of string from cloudinary url
+      required: true,
+    },
+    coverImage: {
+      type: String,
+      //storing cloudinary url
+    },
+    watchHistory: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Video",
       },
-      avatar:{
-        type:String,//to store image in form of string from cloudinary url
-        required: true,
-      },
-      coverImage:{
-        type:String,
-        //storing cloudinary url
-
-      },
-      watchHistory:[
-        {
-            type : Schema.Types.ObjectId,
-            ref :"Video"
-           
-        }
-      ],
-      password:{
-        type:String,
-        required: [true ,'Password is  required!!']
-         
-
-      },
-      refreshToken:{
-        type : String
-      }
-        
-      
+    ],
+    password: {
+      type: String,
+      required: [true, "Password is  required!!"],
+    },
+    refreshToken: {
+      type: String,
+    },
   },
-
 
   {
     timestamps: true,
@@ -64,6 +55,5 @@ const userSchema = new Schema(
 );
 
 //using mongoose hook=>pre : used to execute function before savind data
-
 
 export const User = mongoose.model("User", userSchema);
