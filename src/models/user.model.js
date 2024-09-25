@@ -56,5 +56,32 @@ const userSchema = new Schema(
 );
 
 //using mongoose hook=>pre : used to execute function before savind data
+userSchema.pre("save" , async function(next) {
+  //set of rules to use pre hook
+  //1)use of async function(next)
 
+   if(!this.isModified("password")) return next();
+ this.password = bcrypt.hash(this.password , 10)
+  next()
+})
+///adding custom method
+userSchema.met.ispasscorrect = async function
+(password){
+  return awaitmbcrypt.compare(password , this.password)
+}
+userSchema.methods.generateAccessToken = function(){
+  jwt.sign(
+    {
+      _id : this._id,
+      email : this.email,
+      username : this.username,
+      fullname : this.fullname
+
+    },
+    process.env.ACCESS_TOKEN_SECRET,{
+      expiresIn :process.env.ACCESS_TOKEN_EXPIRY
+    }
+  )
+}
+userSchema.methods.generateRefreshToken = function(){}
 export const User = mongoose.model("User", userSchema);
