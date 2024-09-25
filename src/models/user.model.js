@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import { JsonWebTokenError } from "jsonwebtoken";
 import bcrypt from "bcrypt";
+//imported bcrypt for encrypting password
 
 const userSchema = new Schema(
   {
