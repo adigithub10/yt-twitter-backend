@@ -4,7 +4,7 @@ import fs from fs;
 cloudinary.config({
     cloud_names :process.env.CLOUDDINARY_CLOUD_NAME,
     api_key :process.env.CLOUDINARY_API_KEY,
-    ap_secret:process.env. "Gheju1Z4iiLDX3yWKvUVGywF6dE"
+    ap_secret:process.env. Gheju1Z4iiLDX3yWKvUVGywF6dE
 })
 
 
@@ -17,4 +17,17 @@ cloudinary.config({
         api_secret: '<your_api_secret>' // Click 'View API Keys' above to copy your API secret
     });
     
+    
 })
+  // Upload an image 
+  const uploadResult = await cloudinary.uploader
+  .upload(
+      'https://res.cloudinary.com/demo/image/upload/getting-started/shoes.jpg', {
+          public_id: 'shoes',
+      }
+  )
+  .catch((error) => {
+      console.log(error);
+  });
+
+console.log(uploadResult);
