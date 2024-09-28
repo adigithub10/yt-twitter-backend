@@ -37,6 +37,7 @@ const userSchema = new Schema(
     },
     watchHistory: [
       {
+        //this will not be input field.auto generated
         type: Schema.Types.ObjectId,
         ref: "Video",
       },
@@ -72,6 +73,7 @@ userSchema.met.ispasscorrect = async function
 userSchema.methods.generateAccessToken = function(){
   jwt.sign(
     {
+      //includes inbuilt function!!!
       _id : this._id,
       email : this.email,
       username : this.username,

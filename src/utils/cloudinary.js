@@ -1,5 +1,6 @@
 import {v2 as cloudinary} from cloudinary;
 import fs from fs;
+//this code is incomplete!!need to complete this soon
 
 cloudinary.config({
     cloud_names :process.env.CLOUDDINARY_CLOUD_NAME,

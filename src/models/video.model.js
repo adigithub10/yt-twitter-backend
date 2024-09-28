@@ -1,6 +1,7 @@
 import mongoose, { Schema } from "mongoose";
 import mongooseAggregatePaginate from "mongoose-aggregate-paginate-v2";
 //paginate is installed for this schema
+//some of the data will be extracted from cloudinary
 const videoSchema = new Schema(
   {
     videoFile: {
@@ -12,8 +13,13 @@ const videoSchema = new Schema(
       type: String, //cloudinary url
       required: true,
     },
-    title: { type: String, required: true },
-    description: {
+    title: 
+    { 
+      type: String, 
+      required: true 
+    },
+    description: 
+    {
       type: String,
       required: true,
     },
